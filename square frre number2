@@ -1,0 +1,26 @@
+import math
+
+n = int(input())
+factors = []
+for i in range(2,n+1):
+    if n % i == 0:
+        factors.append(i)
+
+limit = int(math.sqrt(n))
+count = 0 
+perfect_squares = []
+
+for i in range(2,limit+1):
+    perfect_squares.append(i*i)
+
+count = 0
+prime = True
+
+for factor in factors:
+    if factor not in perfect_squares:
+        for p in perfect_squares:
+            if factor % p == 0:
+                prime = False 
+        if prime:
+            count += 1 
+print(count)
