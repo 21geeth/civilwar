@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        String s = scanner.next();
+        int i = 0;
+        String a = Integer.toString(n);
+        int j = 0;
+        for (int k = 0; k < s.length(); k++) {
+            if (s.charAt(k) == 'R') {
+                j = j + 1;
+            } else if (s.charAt(k) == 'L') {
+                j = j - 1;
+            } else if (s.charAt(k) == 'T') {
+                a = a.substring(0, j) + (char)(a.charAt(j) + 1) + a.substring(j + 1);
+            } else if (s.charAt(k) == 'D') {
+                a = a.substring(0, i) + (char)(a.charAt(i) - 1) + a.substring(i + 1);
+            } else {
+                char temp = a.charAt(s.charAt(k));
+                a = a.substring(0, s.charAt(k)) + a.charAt(s.charAt(k + 1)) + a.substring(s.charAt(k) + 2);
+                a = a.substring(0, s.charAt(k + 1)) + temp + a.substring(s.charAt(k + 1) + 1);
+                k++;
+            }
+        }
+        System.out.println(a);
+    }
+}
